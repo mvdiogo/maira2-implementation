@@ -1,0 +1,25 @@
+
+services:
+  backend:
+    build: .
+    env_file:
+      - .env
+    container_name: maira_backend
+    ports:
+      - "8000:8000"
+    environment:
+      HF_TOKEN: ${HF_TOKEN}
+      NUM_THREADS: ${NUM_THREADS:-4}
+    volumes:
+      - ./back/results:/app/results:rw
+    restart: unless-stopped
+  frontend:
+    image: nginx:1.25.3-alpine3.18
+    container_name: maira_frontend
+    hostname: server1
+    volumes:
+      - ./front/MAIRA-2/dist:/usr/share/nginx/html/
+      - ./front/MAIRA-2/logs:/var/log/nginx
+      - ./front/MAIRA-2/nginx/sites/:/etc/nginx/conf.d
+    ports:
+      - "8090:80"
