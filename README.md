@@ -87,14 +87,26 @@ graph TD;
    cd maira2-implementation
    ```
 
-2. **Configure Environment**  
-   Create `.env` in project root:
+2. **Configure the Environment**  
+   Create a `.env` file in the project root with the following content:
    ```ini
    # Backend Configuration
    HF_TOKEN=your_huggingface_token
    NUM_THREADS=4
    ```
 
+   Create a `.env` file in the project back folder with the following content:
+   ```ini
+   # Backend Configuration
+   HF_TOKEN=your_huggingface_token
+   NUM_THREADS=4
+   ```
+
+      Create a `.env.production` file in the project front.MAIRA-2 folder with the following content:
+   ```ini
+   # Frontend Configuration
+   VITE_API_ENDPOINT=https://your-production-api.com/generate_report/
+   ```
 3. **Build & Launch**
    ```bash
    # Install frontend dependencies
