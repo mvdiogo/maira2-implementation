@@ -57,12 +57,12 @@ This repository provides a full-stack implementation of Microsoft's [MAIRA-2](ht
 
 ## 🏗 Architecture
 ```mermaid
-graph TD
-  A[Frontend] -->|HTTP Requests| B[FastAPI Server]
-  B -->|Hugging Face API| C[MAIRA-2 Model]
-  C -->|Report Generation| B
-  B -->|Caching|
-  B -->|Response| A
+graph TD;
+  A[Frontend] -->|HTTP Requests| B[FastAPI Server];
+  B -->|Hugging Face API| C[MAIRA-2 Model];
+  C -->|Report Generation| B;
+  B -->|Caching| D[Cache System];
+  B -->|Response| A;
 ```
 
 **Model Components**:
