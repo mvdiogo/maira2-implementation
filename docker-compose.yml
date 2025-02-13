@@ -21,5 +21,6 @@ services:
       - ./front/MAIRA-2/dist:/usr/share/nginx/html/
       - ./front/MAIRA-2/logs:/var/log/nginx
       - ./front/MAIRA-2/nginx/sites/:/etc/nginx/conf.d
+    restart: unless-stopped
     ports:
       - "8090:80"
