@@ -16,10 +16,10 @@ async def lifespan(app: FastAPI):
     Handles the application's startup and shutdown events.
     """
     model_loader = ModelLoader()
-    await asyncio.to_thread(model_loader.load_model)  # Load the model in a separate thread
+    await asyncio.to_thread(model_loader.load_model)
     report_generator = ReportGenerator(model_loader)
     report_generator.setup()
-    app.state.report_generator = report_generator  # Store the instance in app state
+    app.state.report_generator = report_generator
     yield
     logger.info("Shutting down the model...")
 
@@ -91,7 +91,7 @@ async def read_root():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        app="api:app",  # Correct app import path
+        app="api:app",
         host="0.0.0.0",
         port=8000,
         log_level="info",

@@ -21,7 +21,7 @@ function App() {
     const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 
     useEffect(() => {
-        Cookies.set('darkMode', darkMode.toString(), { sameSite: 'Lax' }); // Store as string
+        Cookies.set('darkMode', darkMode.toString(), { sameSite: 'Lax' });
     }, [darkMode]);
 
 

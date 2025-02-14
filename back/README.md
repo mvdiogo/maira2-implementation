@@ -75,7 +75,7 @@ back/
 To start the FastAPI server, run the following command:
 
 ```bash
-uvicorn maira_report_generator.api:app --host 0.0.0.0 --port 8000 --log-level info --workers 2
+python api.py
 ```
 
 The server will be accessible at [http://yourip:8000](http://yourip:8000).
