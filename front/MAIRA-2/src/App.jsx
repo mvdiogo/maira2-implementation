@@ -18,8 +18,7 @@ function App() {
         const cookieValue = Cookies.get('darkMode');
         return cookieValue === 'true';
     });
-    const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
-
+    
     useEffect(() => {
         Cookies.set('darkMode', darkMode.toString(), { sameSite: 'Lax' });
     }, [darkMode]);
@@ -46,11 +45,19 @@ function App() {
             formData.append('comparison', comparison);
             formData.append('technique', technique);
 
-            const response = await fetch(API_ENDPOINT, {
-                method: 'POST',
-                mode: 'cors',
-                body: formData,
-            });
+            const response = await fetch(
+                `${import.meta.env.VITE_API_ENDPOINT}/generate_report`, 
+                {
+                  method: 'POST',
+                  headers: {
+                    'accept': 'application/json',
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                  },
+                    body: formData,
+                }
+            )
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
