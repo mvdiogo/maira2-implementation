@@ -24,13 +24,21 @@ class ImageUtils:
         """
         try:
             async with httpx.AsyncClient(timeout=10) as client:
-                response = await client.get(url, headers={"User-Agent": "MAIRA-2"})
+                response = await client.get(
+                    url,
+                    headers={"User-Agent": "MAIRA-2"}
+                    )
                 response.raise_for_status()
                 return Image.open(BytesIO(response.content)).convert("RGB")
         except httpx.HTTPError as e:
-            raise HTTPException(status_code=400, detail=f"Failed to download image: {e}")
+            raise HTTPException(
+                status_code=400, detail=f"Failed to download image: {e}"
+            )
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Error processing image: {e}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Error processing image: {e}"
+                )
 
     @staticmethod
     def image_to_base64(img: Image.Image) -> str:

@@ -19,10 +19,11 @@ class Config:
     @staticmethod
     def configure_threads() -> int:
         """
-        Configure CPU threads based on available cores if CUDA is not available.
+        Configure CPU threads based on available cores if
+        CUDA is not available.
         """
         if not torch.cuda.is_available():
-            num_threads = int(getenv("NUM_THREADS", cpu_count()/2 or 1))
+            num_threads = int(getenv("NUM_THREADS", cpu_count() / 2 or 1))
             torch.set_num_threads(num_threads)
             print(f"Using {num_threads} CPU threads.")
             return num_threads
