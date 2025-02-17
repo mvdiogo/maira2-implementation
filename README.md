@@ -112,6 +112,10 @@ graph TD;
    # Install frontend dependencies
    cd frontend && npm install && npm run build
 
+   # Define your HF_TOKEN
+
+   export HF_TOKEN='YOURKEY'
+
    # Start services on the root project
    docker compose up -d --build
 
