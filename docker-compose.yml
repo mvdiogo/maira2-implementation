@@ -1,7 +1,11 @@
 
 services:
   backend:
-    build: .
+    build:
+      context: .
+      args:
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
     env_file:
       - .env
     container_name: maira_backend
@@ -11,7 +15,7 @@ services:
       HF_TOKEN: ${HF_TOKEN}
       NUM_THREADS: ${NUM_THREADS:-4}
     volumes:
-      - ./back/results:/app/results:rw
+      - ./back/results:/app/results:rw,z
     restart: unless-stopped
   frontend:
     image: nginx:1.25.3-alpine3.18
